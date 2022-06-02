@@ -64,7 +64,7 @@ void startMotorThread(void const *argument);
 
 /* USER CODE BEGIN PFP */
 void sweep(int from, int to) {
-	int speed = 7;
+	int speed = 10;
 	if (from < to) {
 		for (int x = from; x < to; x++) {
 			__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, x);
@@ -82,13 +82,16 @@ void sweep(int from, int to) {
  * THERE WILL BE TWO MODE OF WAVING, LRL AND RLR
  */
 void wave(int mode) {
+	int startAngle = 50;
+	int stopAngle = 100;
+
 	int begin, end;
 	if (mode == 1) {
-		begin = 50;
-		end = 100;
+		begin = startAngle;
+		end = stopAngle;
 	} else {
-		begin = 100;
-		end = 50;
+		begin = stopAngle;
+		end = startAngle;
 	}
 
 /*
